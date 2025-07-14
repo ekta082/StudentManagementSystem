@@ -1,17 +1,63 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        StudentManager manager = new StudentManager();
+        Scanner sc = new Scanner(System.in);
+        int choice;
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        do {
+            System.out.println("\n--- Student Management System ---");
+            System.out.println("1. Add Student");
+            System.out.println("2. View All Students");
+            System.out.println("3. Assign Course to Student");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            sc.nextLine(); // consume newline
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter ID: ");
+                    String id = sc.nextLine();
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
+                    System.out.print("Enter Email: ");
+                    String email = sc.nextLine();
+                    manager.addStudent(new Student(id, name, email));
+                    System.out.println("Student added.");
+                    break;
+
+                case 2:
+                    manager.viewAllStudents();
+                    break;
+
+                case 3:
+                    System.out.print("Enter Student ID: ");
+                    String sid = sc.nextLine();
+                    System.out.print("Enter Course Name: ");
+                    String course = sc.nextLine();
+                    manager.assignCourse(sid, course);
+                    break;
+
+                case 4:
+                    System.out.print("Enter Student ID to delete: ");
+                    String delId = sc.nextLine();
+                    manager.deleteStudent(delId);
+                    System.out.println("Student deleted if ID existed.");
+                    break;
+
+                case 5:
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 5);
+
+        sc.close();
     }
 }
