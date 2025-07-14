@@ -3,4 +3,3 @@ The Student Management System is a console-based application developed in Java t
 It allows an admin to add, view, delete, and assign courses to students. All data is stored persistently using file handling, and the system uses a clean modular architecture following OOP principles.
 
 
-"C:\Users\HP\OneDrive\Pictures\STUDENT.jpg"
